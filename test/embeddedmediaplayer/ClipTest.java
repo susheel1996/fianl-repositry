@@ -99,7 +99,24 @@ public void testEqualsOnEqualClips()
         
        
 }
-
+@Test
+public void testEqualsOnNonEqualClips() 
+{
+    System.out.println("multiple videos creation");
+       String SubTitle1 = "Sub video 2";
+       Clip subClip1 = new Clip(SubTitle1,5,40); 
+       
+       Clip subClip2 = new Clip();
+       String SubTitle2 = "Sub video 1";  
+       subClip2.setTitle(SubTitle2);    
+       subClip2.setStart(5);
+       subClip2.setEnd(40);
+       
+       boolean DuplicateClip = subClip1.equals(subClip2); 
+       assertEquals(false,DuplicateClip); 
+       System.out.println("Duplicate video");  
+        
+}
 
 @Test
 public void testSetEndToNegativeNumberKeepsPreviousValue() 
@@ -115,7 +132,7 @@ public void testSetEndToNegativeNumberKeepsPreviousValue()
        instance.setEnd(originalNegativenumber);
        int EndTime = instance.getEnd(); 
        instance.setStart(EndTime); 
-       int CurrentStartTime = instance.getStart();
+       int CurrentNegativeTime = instance.getStart();
        assertEquals(OriginalEndtime,originalNegativenumber);
        System.out.println("Start time is same as previous value");
 }
