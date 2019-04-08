@@ -46,11 +46,11 @@ public class ClipTest {
             System.out.println("setTitle");
         Clip instance = new Clip();
         String OriginalTitle = "Original Title";
-        instance.setTitle(OriginalTitle);              // try to set Empty Title
+        instance.setTitle(OriginalTitle);            
         String EmptyTitle = " ";
-        instance.setTitle(EmptyTitle);              // try to set Empty Title
-        String ModifiedTitle = instance.getTitle(); // check Empty Title is set or not 
-        assertTrue(OriginalTitle.equals(ModifiedTitle));// compare original title and resulted title
+        instance.setTitle(EmptyTitle);              
+        String ModifiedTitle = instance.getTitle();  
+        assertTrue(OriginalTitle.equals(ModifiedTitle));
         System.out.println("Empty Title is not set");
     }
         
@@ -61,44 +61,43 @@ public class ClipTest {
     {
         System.out.println("Doesn't allow to set end time to start time");
        Clip instance = new Clip();
-       String OriginalTitle = "Sub video"; //Create sub video clip
-       instance.setTitle(OriginalTitle);   // Set Ttile  
-       int OriginalStartTime = 10; // sub video start time
-       int originalEndtime = 50;// sub video end time
-       instance.setMax(100);//set master video to 100 seconds video
- // Create a new sub clip from 10th second to 50th second
-       instance.setStart(OriginalStartTime);//Set start time to sub video from 10th sec 
-       instance.setEnd(originalEndtime);// set end time to sub video at 50th second
-       int EndTime = instance.getEnd(); //Get endtime of the video
-       instance.setStart(EndTime); //try setting end time as start time to the sub clip
-       int CurrentStartTime = instance.getStart();//chek start time was set to endtime, usually it wont allow
+       String OriginalTitle = "Sub video";
+       instance.setTitle(OriginalTitle);  
+       int OriginalStartTime = 10;
+       int originalEndtime = 50;
+       instance.setMax(100);
+       instance.setStart(OriginalStartTime); 
+       instance.setEnd(originalEndtime);
+       int EndTime = instance.getEnd(); 
+       instance.setStart(EndTime); 
+       int CurrentStartTime = instance.getStart();
        assertEquals(OriginalStartTime,CurrentStartTime);
        System.out.println("Start time is same as previous value");
     }
     
     
 
-    @Test
-    public void testEqualsOnEqualClips() 
-    {
-        
-    }
+   @Test
+public void testEqualsOnNonEqualClips() 
+{
+     
     
-    @Test
-    public void testEqualsOnNonEqualClips() 
-    {
-    }
-    
-    @Test
-    public void testSetEndToNegativeNumberKeepsPreviousValue() 
-    {
-    }
-    
-    @Test
-    public void testSetStartToValidPositiveNumber() 
-    {    
-    }
 
+       System.out.println("multiple videos creation");
+       String SubTitle1 = "Sub video 1";
+       Clip subClip1 = new Clip(SubTitle1,5,40); 
+       
+       Clip subClip2 = new Clip();
+       String SubTitle2 = "Sub video 1";  
+       subClip2.setTitle(SubTitle2);    
+       subClip2.setStart(5);
+       subClip2.setEnd(40);
+       
+       boolean DuplicateClip = subClip1.equals(subClip2); 
+       assertEquals(true,DuplicateClip); 
+       System.out.println("Duplicate video");  
+        
+}
     /**
      * Test of getTitle method, of class Clip.
      */
