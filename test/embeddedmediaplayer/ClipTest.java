@@ -137,10 +137,14 @@ public void testSetEndToNegativeNumberKeepsPreviousValue()
        System.out.println("Start time is same as previous value");
 }
 
+@Test
+public void testSetStartToValidPositiveNumber() 
+{ 
+}
 
     /**
      * Test of getTitle method, of class Clip.
-     */
+     *
     @Test
     public void testGetTitle() {
         System.out.println("getTitle");
